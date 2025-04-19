@@ -1,31 +1,36 @@
-name: Generate RSS Feed
+const fs = require('fs');
+const cheerio = require('cheerio');
+const fg = require('fast-glob');
 
-on:
-  push:
-    branches: [main]
+// ✅ GANTI baseUrl sesuai dengan repo kamu
+const baseUrl = "https://dailyindonesianews.github.io/berita-terupdate";
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
+// Ambil semua file HTML di root folder
+const files = fg.sync('*.html');
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
+const items = files.map((file) => {
+    const html = fs.readFileSync(file, 'utf8');
+    const $ = cheerio.load(html);
+    const title = $('h1').first().text() || file.replace('.html', '');
+    const url = `${baseUrl}/${file}`;
+    return `
+    <item>
+        <title>${title}</title>
+        <link>${url}</link>
+        <guid>${url}</guid>
+        <pubDate>${new Date().toUTCString()}</pubDate>
+    </item>`;
+});
 
-      - name: Install dependencies
-        run: npm install fast-glob cheerio
+const rss = `<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+  <title>Berita Terbaru</title>
+  <link>${baseUrl}</link>
+  <description>RSS Feed Berita Otomatis</description>
+  ${items.join('')}
+</channel>
+</rss>`;
 
-      - name: Generate rss.xml
-        run: node tools/generate-rss.js
-
-      - name: Commit & Push RSS
-        run: |
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
-          git add rss.xml
-          git commit -m "Update RSS feed" || echo "No changes"
-          git pull --rebase origin main
-          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/dailyindonesianews/berita-terupdate.git
+fs.writeFileSync('rss.xml', rss);
+console.log('✅ rss.xml generated');
