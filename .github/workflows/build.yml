@@ -27,5 +27,5 @@ jobs:
           git config user.email "actions@github.com"
           git add rss.xml
           git commit -m "Update RSS feed" || echo "No changes"
-          git pull --rebase
+          git pull --rebase origin main
           git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/dailyindonesianews/berita-terupdate.git
