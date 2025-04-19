@@ -1,17 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0">
-<channel>
-  <title>Berita Terbaru</title>
-  <link>https://dailyindonesianews.github.io/berita-terupdate</link>
-  <description>RSS Feed Berita Otomatis</description>
-  
+  <channel>
+    <title>Daily Indonesia News</title>
+    <link>https://dailyindonesianews.github.io</link>
+    <description>Berita Terupdate Hari Ini</description>
     <item>
-        <title>google185ca67801b45adc</title>
-        <link>https://dailyindonesianews.github.io/berita-terupdate/google185ca67801b45adc.html</link>
+      <title>Contoh Berita Pertama</title>
+      <link>https://dailyindonesianews.github.io/berita-pertama</link>
+      <description>Ini adalah contoh berita pertama.</description>
     </item>
-    <item>
-        <title>Kesenangan Bermain Game Online</title>
-        <link>https://dailyindonesianews.github.io/berita-terupdate/index.html</link>
-    </item>
-</channel>
+  </channel>
 </rss>
