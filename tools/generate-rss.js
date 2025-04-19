@@ -2,7 +2,7 @@ const fs = require('fs');
 const cheerio = require('cheerio');
 const fg = require('fast-glob');
 
-const baseUrl = "https://USERNAME.github.io/NAMA-REPO";
+const baseUrl = "https://dailyindonesianews.github.io/berita-terupdate";
 const files = fg.sync('*.html');
 
 const items = files.map((file) => {
