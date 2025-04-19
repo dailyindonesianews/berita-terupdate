@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://dailyindonesianews.github.io/sitemap.xml
