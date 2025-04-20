@@ -1,12 +1,29 @@
 <rss version="2.0">
-  <channel>
-    <title>Daily Indonesia News</title>
-    <link>https://dailyindonesianews.github.io</link>
-    <description>Berita Terupdate Hari Ini</description>
+    <channel>
+      <title>Daily Indonesia News</title>
+      <link>https://dailyindonesianews.github.io/berita-terupdate/</link>
+      <description>Berita Terupdate Hari Ini</description>
+      
     <item>
-      <title>Contoh Berita Pertama</title>
-      <link>https://dailyindonesianews.github.io/berita-pertama</link>
-      <description>Ini adalah contoh berita pertama.</description>
+      <title><![CDATA[Cuma 15 Menit Sehari di Slot, Kini Hidup dari Pola Gacor yang Diincar Para High Roller!]]></title>
+      <link>https://dailyindonesianews.github.io/berita-terupdate/15-menit-hidup-mewah</link>
+      <description><![CDATA[Cuma 15 Menit Sehari di Slot, Kini Hidup dari Pola Gacor yang Diincar Para High Roller!]]></description>
+      <pubDate>2025-04-20</pubDate>
     </item>
-  </channel>
-</rss>
+  
+    <item>
+      <title><![CDATA[Daftar Artikel Terbaru]]></title>
+      <link>https://dailyindonesianews.github.io/berita-terupdate/daftar-artikel</link>
+      <description><![CDATA[Daftar Artikel Terbaru]]></description>
+      <pubDate>2025-04-20</pubDate>
+    </item>
+  
+    <item>
+      <title><![CDATA[Kesenangan Bermain Game Online Baru]]></title>
+      <link>https://dailyindonesianews.github.io/berita-terupdate/</link>
+      <description><![CDATA[Kesenangan Bermain Game Online Baru]]></description>
+      <pubDate>2025-04-20</pubDate>
+    </item>
+  
+    </channel>
+  </rss>
