@@ -17,7 +17,7 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        run: npm install
+        run: npm install cheerio fast glob
 
       - name: Generate robots.txt
         run: node tools/generate-robots.js
