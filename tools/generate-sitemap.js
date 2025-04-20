@@ -1,7 +1,7 @@
 const fs = require('fs');
 const glob = require('fast-glob');
 
-const baseUrl = 'https://dailyindonesianews.github.io'; // Ganti jika kamu pakai custom domain
+const baseUrl = 'https://dailyindonesianews.github.io/berita-terupdate/"; // Ganti jika kamu pakai custom domain
 
 (async () => {
   try {
@@ -17,8 +17,8 @@ const baseUrl = 'https://dailyindonesianews.github.io'; // Ganti jika kamu pakai
     const urls = files.map(file => {
       const cleanPath = file
         .replace(/index\.html$/, '') // hapus index.html
-        .replace(/\.html$/, '')      // hapus .html
-        .replace(/\\/g, '/');        // fix backslash di Windows
+        // .replace(/\.html$/, '')   // 🛑 Jangan hapus .html!
+        .replace(/\\/g, '/');         // fix backslash Windows
       return `<url><loc>${baseUrl}/${cleanPath}</loc></url>`;
     });
 
