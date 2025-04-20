@@ -45,3 +45,6 @@ jobs:
 
       - name: Ping Bing to Submit Sitemap
         run: curl https://www.bing.com/ping?sitemap=https://dailyindonesianews.github.io/berita-terupdate/sitemap.xml
+
+      - name: Inject Structured Data
+        run: node tools/inject-structured-data.js
