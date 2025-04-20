@@ -3,6 +3,9 @@ name: Generate RSS and Sitemap
 on:
   push:
     branches: [main]
+  workflow_dispatch:  # ✅ Bisa dijalankan manual lewat GitHub Actions
+  # schedule:
+  #   - cron: '0 * * * *'  # ✅ (opsional) auto jalan tiap 1 jam
 
 jobs:
   build:
