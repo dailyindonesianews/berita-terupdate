@@ -42,3 +42,6 @@ jobs:
 
       - name: Ping Google to Submit Sitemap
         run: curl https://www.google.com/ping?sitemap=https://dailyindonesianews.github.io/berita-terupdate/sitemap.xml
+
+      - name: Ping Bing to Submit Sitemap
+        run: curl https://www.bing.com/ping?sitemap=https://dailyindonesianews.github.io/berita-terupdate/sitemap.xml
