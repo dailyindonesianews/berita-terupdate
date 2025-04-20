@@ -22,11 +22,20 @@ jobs:
       - name: Generate robots.txt
         run: node tools/generate-robots.js
 
+      - name: Generate rss.xml
+        run: node tools/generate-rss.js
+
+      - name: Generate sitemap.xml
+        run: node tools/generate-sitemap.js
+
+      - name: Generate artikel.json
+        run: node tools/generate-articles.js
+
       - name: Commit and Push Generated Files
         run: |
-         git config user.name "github-actions"
-         git config user.email "actions@github.com"
-         git add rss.xml sitemap.xml robots.txt || true
-         git commit -m "Update generated files" || echo "No changes"
-         git pull --rebase --autostash origin main
-         git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add rss.xml sitemap.xml robots.txt artikel.json || true
+          git commit -m "Update generated files" || echo "No changes"
+          git pull --rebase --autostash origin main
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
