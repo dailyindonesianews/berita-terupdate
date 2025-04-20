@@ -48,3 +48,7 @@ jobs:
 
       - name: Inject Structured Data
         run: node tools/inject-structured-data.js
+
+      - name: Inject OpenGraph Tags
+        run: node tools/inject-og-tags.js
+
