@@ -1,7 +1,7 @@
 const fs = require('fs');
 const glob = require('fast-glob');
 
-const baseUrl = 'https://dailyindonesianews.github.io/berita-terupdate/"; // Ganti jika kamu pakai custom domain
+const baseUrl = 'https://dailyindonesianews.github.io/berita-terupdate/';
 
 (async () => {
   try {
