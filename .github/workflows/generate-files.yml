@@ -43,6 +43,8 @@ jobs:
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git fetch origin main
+          git reset --hard
+          git clean -fd
           git reset --hard origin/main
           git add rss.xml sitemap.xml robots.txt artikel.json || true
           git commit -m "Update generated files" || echo "No changes"
