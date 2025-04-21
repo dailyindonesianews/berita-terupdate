@@ -53,7 +53,7 @@ jobs:
           git clean -fd
           git add rss.xml sitemap.xml robots.txt artikel.json || true
           git commit -m "Update generated files" || echo "No changes"
-          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+          git push --force https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
 
       - name: Delay before ping
         run: sleep 10
