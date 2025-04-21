@@ -3,12 +3,12 @@ name: Generate RSS and Sitemap
 on:
   push:
     branches: [main]
-  workflow_dispatch:  # ✅ Bisa dijalankan manual dari GitHub UI
-  schedule:           # ✅ Jalan otomatis setiap 10 menit
-    - cron: '*/10 * * * *'
+  workflow_dispatch:
+  schedule:
+    - cron: '*/10 * * * *'  # Auto jalan tiap 10 menit
 
-concurrency:          # ✅ Hindari tabrakan antar run
-  group: ${{ github.workflow }}-${{ github.ref }}
+concurrency:
+  group: auto-generate
   cancel-in-progress: true
 
 jobs:
@@ -38,26 +38,28 @@ jobs:
       - name: Generate artikel.json
         run: node tools/generate-articles.js
 
+      - name: Inject Structured Data
+        run: node tools/inject-structured-data.js
+
+      - name: Inject OpenGraph Tags
+        run: node tools/inject-og-tags.js
+
       - name: Commit and Push Generated Files
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git fetch origin main
-          git reset --hard
-          git clean -fd
+          git fetch --all
           git reset --hard origin/main
+          git clean -fd
           git add rss.xml sitemap.xml robots.txt artikel.json || true
           git commit -m "Update generated files" || echo "No changes"
           git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+
+      - name: Delay before ping
+        run: sleep 10
 
       - name: Ping Google to Submit Sitemap
         run: curl https://www.google.com/ping?sitemap=https://dailyindonesianews.github.io/berita-terupdate/sitemap.xml
 
       - name: Ping Bing to Submit Sitemap
         run: curl https://www.bing.com/ping?sitemap=https://dailyindonesianews.github.io/berita-terupdate/sitemap.xml
-
-      - name: Inject Structured Data
-        run: node tools/inject-structured-data.js
-
-      - name: Inject OpenGraph Tags
-        run: node tools/inject-og-tags.js
