@@ -5,7 +5,7 @@ const content = `
 User-agent: *
 Disallow:
 
-Sitemap: https://dailyindonesianews.github.io/sitemap.xml
+Sitemap: https://dailyindonesianews.github.io/berita-terupdate/sitemap.xml
 `.trim();
 
 fs.writeFileSync('robots.txt', content);
